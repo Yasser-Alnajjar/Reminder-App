@@ -77,6 +77,7 @@ function datePiker(neddedDate, value) {
           new Notification("Reminder App", {
             body: value,
             tag: value,
+            icon: "../icon.png",
           });
         }
       });
