@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-color: #2980b9;
+  --alt-color: #3498db;
+  --color-blue: #8291ff;
+  --shadow: 0px 5px 10px rgba(0, 0, 0, 50%);
+  --transition: 0.5s ease-in-out;
+  --gray1: #f8f8f8;
+  --gray2: #12181b;
+}
+body {
+  background-color: #f7f7f7;
+  /* background-color: #12181b; */
+  min-height: 100vh;
+}
+input {
+  outline: none;
+  width: 100%;
+}
+.reminder {
+  min-width: 600px;
+  min-height: 100vh;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 50px auto;
+}
+@media screen and (max-width: 767px) {
+  .reminder {
+    min-width: 300px;
+  }
+}
+.reminder-contaienr {
+  background-color: #eee;
+  color: var(--color-blue);
+  border-radius: 6px;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #999;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 60%);
+}
+.reminder-contaienr > h2 {
+  color: var(--main-color);
+  text-align: center;
+  padding: 15px 0;
+}
+
+.reminder-head .form-control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.reminder-head .task_input {
+  width: 100%;
+  border: none;
+  text-align: center;
+  border-bottom: 2px solid var(--color-blue);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  font-size: 16px;
+  padding: 10px 0;
+}
+.reminder-head .datetimelocal {
+  color: black;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  padding: 7px;
+  cursor: pointer;
+  border-bottom: 2px solid var(--color-blue);
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  text-align: left;
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+}
+
+.reminder-head .add_reminder {
+  padding: 10px 15px;
+  color: white;
+  cursor: pointer;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  appearance: none;
+  border: none;
+  border-bottom: 2px solid #093577;
+  border-radius: 6px;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+.reminder-head .add_reminder:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.reminder-head .add_reminder:hover {
+  background-color: #0b5ed7;
+}
+.reminder-body {
+  width: 100%;
+  padding-top: 20px;
+}
+.body_reminder-item {
+  background-color: #ffffff;
+  color: #666;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+  text-transform: capitalize;
+}
+.body_reminder-item .delete {
+  border: none;
+  appearance: none;
+  background-color: red;
+  color: #fff;
+  transition: var(--transition);
+  border-radius: 10px;
+  height: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: relative;
+}
+.body_reminder-item.completed::before {
+  content: "";
+  width: 88%;
+  height: 1px;
+  background-color: rgb(132, 130, 130);
+  position: absolute;
+  text-align: center;
+  z-index: 99;
+}
+.reminder-head .datetimelocal:active,
+.reminder-head .add_reminder:active,
+.body_reminder-item .delete:active {
+  opacity: 0.7;
+}
+
+.modal {
+  position: relative;
+  transition: 0.5s ease-in-out;
+  height: 200px;
+}
+
+.modal-container {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  width: 350px;
+  transition: 0.5s ease-in-out;
+  z-index: 5;
+  border-radius: 6px;
+}
+@media screen and (max-width: 767px) {
+  .modal-container {
+    width: 300px;
+  }
+}
+.modal-container[data-hide="true"] {
+  display: none;
+}
+.modal[data-hide="true"] {
+  height: 0;
+}
+.modal-content {
+  color: var(--gray2);
+  background-color: var(--gray1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4.8px;
+  transition: all 0.5s ease-in-out;
+  box-shadow: var(--shadow);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+.modal-title {
+  font-size: 20px;
+}
+.modal-body {
+  padding: 15px;
+  border-top: 1px solid #727272;
+}
+.modal-body p {
+  padding: 3px 0;
+  color: #666;
+}
+.modal-header .btn-close {
+  color: var(--gray2);
+  background-color: var(--gray1);
+  font-size: 20px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+}
